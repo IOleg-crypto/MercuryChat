@@ -1,10 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chat.demo.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #16161a;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chat.demo.HelloController">
    <children>
-      <Button layoutX="174.0" layoutY="200.0" mnemonicParsing="false" onAction="#onHelloButtonClick" text="Сlick me" />
+
+      <VBox alignment="CENTER" cache="true" focusTraversable="true" prefHeight="55.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="#f4f4f6" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Mercury" textAlignment="CENTER" textOrigin="CENTER">
+               <font>
+                  <Font name="Cascadia Code SemiBold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+
+      <HBox spacing="16.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="60.0">
+         <children>
+
+            <VBox spacing="12.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TextArea disable="true" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Messages will appear here..." style="-fx-control-inner-background: #202024; -fx-text-fill: #e4e4e7; -fx-background-color: transparent; -fx-border-color: #2d2d34; -fx-background-radius: 12; -fx-border-radius: 12; -fx-padding: 6;" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Cascadia Code Regular" size="14.0" />
+                     </font>
+                  </TextArea>
+
+                  <HBox spacing="12.0">
+                     <children>
+                        <TextField prefHeight="42.0" promptText="Type a message..." style="-fx-control-inner-background: #202024; -fx-text-fill: #e4e4e7; -fx-background-color: transparent; -fx-border-color: #2d2d34; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 0 14 0 14;" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Cascadia Code Regular" size="13.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#onHelloButtonClick" prefHeight="42.0" prefWidth="110.0" style="-fx-background-color: #3f3f46; -fx-text-fill: #ffffff; -fx-background-radius: 10; -fx-cursor: hand;" text="Send">
+                           <font>
+                              <Font name="Cascadia Code SemiBold" size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+
+            <VBox alignment="TOP_CENTER" prefWidth="220.0" spacing="16.0" style="-fx-background-color: #202024; -fx-border-color: #2d2d34; -fx-background-radius: 14; -fx-border-radius: 14;">
+               <children>
+                  <Text fill="#f4f4f6" strokeType="OUTSIDE" strokeWidth="0.0" text="Server">
+                     <font>
+                        <Font name="Cascadia Code SemiBold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="4.0" />
+                     </VBox.margin>
+                  </Text>
+
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #4f46e5; -fx-text-fill: #ffffff; -fx-background-radius: 10; -fx-cursor: hand;" text="Log In">
+                     <font>
+                        <Font name="Cascadia Code SemiBold" size="13.0" />
+                     </font>
+                  </Button>
+
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #a1a1aa; -fx-border-color: #3f3f46; -fx-border-radius: 10; -fx-cursor: hand;" text="Register">
+                     <font>
+                        <Font name="Cascadia Code Regular" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="27.0" layoutY="128.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openInfoWindow" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #a1a1aa; -fx-border-color: #3f3f46; -fx-border-radius: 10; -fx-cursor: hand;" text="Info" textFill="#b43737">
+                     <font>
+                        <Font name="Cascadia Code Regular" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="16.0" right="16.0" top="20.0" />
+               </padding>
+            </VBox>
+
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

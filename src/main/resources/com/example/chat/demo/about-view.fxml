@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="350.0" spacing="16.0" style="-fx-background-color: #16161a;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+   <padding>
+      <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+   </padding>
+   <children>
+
+
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #202024; -fx-border-color: #3f3f46; -fx-border-radius: 16; -fx-background-radius: 16; -fx-border-width: 1;">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icon/devicon.jpg" />
+               </image>
+
+               <clip>
+                  <Rectangle arcHeight="24.0" arcWidth="24.0" height="100.0" width="100.0" />
+               </clip>
+            </ImageView>
+         </children>
+      </VBox>
+
+      <VBox alignment="CENTER" spacing="4.0">
+         <children>
+            <Text fill="#f4f4f6" strokeType="OUTSIDE" strokeWidth="0.0" text="I#Oleg">
+               <font>
+                  <Font name="Cascadia Code SemiBold" size="16.0" />
+               </font>
+            </Text>
+            <Text fill="#a1a1aa" strokeType="OUTSIDE" strokeWidth="0.0" text="Lead Developer of Mercury">
+               <font>
+                  <Font name="Cascadia Code Regular" size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+
+      <Hyperlink focusTraversable="true" style="-fx-text-fill: #818cf8; -fx-visited-color: #818cf8; -fx-border-color: transparent;" text="github.com/IOleg-crypto" underline="false">
+         <font>
+            <Font name="Cascadia Code SemiBold" size="13.0" />
+         </font>
+      </Hyperlink>
+
+   </children>
+</VBox>
