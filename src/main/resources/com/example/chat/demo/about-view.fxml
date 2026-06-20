@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="350.0" spacing="16.0" style="-fx-background-color: #16161a;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="350.0" spacing="16.0" style="-fx-background-color: #16161a;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chat.demo.HelloController">
    <padding>
       <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
    </padding>
@@ -43,7 +43,7 @@
          </children>
       </VBox>
 
-      <Hyperlink focusTraversable="true" style="-fx-text-fill: #818cf8; -fx-visited-color: #818cf8; -fx-border-color: transparent;" text="github.com/IOleg-crypto" underline="false">
+      <Hyperlink focusTraversable="true" onAction="#openGithub" style="-fx-text-fill: #818cf8; -fx-visited-color: #818cf8; -fx-border-color: transparent;" text="I#Oleg repository" underline="false">
          <font>
             <Font name="Cascadia Code SemiBold" size="13.0" />
          </font>

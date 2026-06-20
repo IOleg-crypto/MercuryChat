@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="380.0" spacing="18.0" style="-fx-background-color: #16161a; -fx-border-color: #2d2d34; -fx-border-width: 1; -fx-border-radius: 16; -fx-background-radius: 16;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chat.demo.LoginController">
+   <padding>
+      <Insets bottom="28.0" left="32.0" right="32.0" top="28.0" />
+   </padding>
+   <children>
+
+      <Text fill="#f4f4f6" strokeType="OUTSIDE" strokeWidth="0.0" text="Connect to Server">
+         <font>
+            <Font name="Cascadia Code SemiBold" size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="6.0" />
+         </VBox.margin>
+      </Text>
+
+      <TextField fx:id="usernameField" maxWidth="1.7976931348623157E308" prefHeight="42.0" promptText="Username" style="-fx-control-inner-background: #202024; -fx-text-fill: #e4e4e7; -fx-prompt-text-fill: #71717a; -fx-background-color: transparent; -fx-border-color: #3f3f46; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 0 14 0 14;">
+         <font>
+            <Font name="Cascadia Code Regular" size="13.0" />
+         </font>
+      </TextField>
+
+      <TextField  fx:id="ipField" maxWidth="1.7976931348623157E308" prefHeight="42.0" promptText="Server IP (e.g., 0.tcp.ngrok.io)" style="-fx-control-inner-background: #202024; -fx-text-fill: #e4e4e7; -fx-prompt-text-fill: #71717a; -fx-background-color: transparent; -fx-border-color: #3f3f46; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 0 14 0 14;">
+         <font>
+            <Font name="Cascadia Code Regular" size="13.0" />
+         </font>
+      </TextField>
+
+      <TextField  fx:id="portField" maxWidth="1.7976931348623157E308" prefHeight="42.0" promptText="Port (e.g., 14832)" style="-fx-control-inner-background: #202024; -fx-text-fill: #e4e4e7; -fx-prompt-text-fill: #71717a; -fx-background-color: transparent; -fx-border-color: #3f3f46; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 0 14 0 14;">
+         <font>
+            <Font name="Cascadia Code Regular" size="13.0" />
+         </font>
+      </TextField>
+
+      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#JoinServer" prefHeight="44.0" style="-fx-background-color: #4f46e5; -fx-text-fill: #ffffff; -fx-background-radius: 10; -fx-cursor: hand;" text="Connect">
+         <font>
+            <Font name="Cascadia Code SemiBold" size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="6.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>
