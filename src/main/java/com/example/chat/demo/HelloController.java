@@ -25,7 +25,9 @@ public class HelloController {
 
     @FXML
     public void initialize() {
-        currentInstance = this;
+        if (chatArea != null) {
+            currentInstance = this;
+        }
     }
 
     public static HelloController getInstance() {
@@ -45,7 +47,8 @@ public class HelloController {
 
     public void appendMessage(String message) {
         Platform.runLater(() -> {
-            chatArea.appendText(message + "\n");
+            String timeStamp = new java.text.SimpleDateFormat("HH:mm:ss").format(new java.util.Date());
+            chatArea.appendText("[" + timeStamp + "] " + message + "\n");
         });
     }
 
@@ -62,10 +65,31 @@ public class HelloController {
             aboutStage.initModality(Modality.APPLICATION_MODAL);
             aboutStage.setResizable(false);
             aboutStage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error! Cannot open info window.");
+        }
+    }
+
+    @FXML
+    public void disconnectServer(ActionEvent event) {
+        NetworkManager.getInstance().disconnect();
+        appendMessage(">>> System: Disconnected.");
+    }
+
+    @FXML
+    public void openMyServers(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("servers-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 250);
+            Stage stage = new Stage();
+            Image icon = new Image(getClass().getResourceAsStream("icon/chaticon.jpg"));
+            stage.getIcons().add(icon);
+            stage.setTitle("My Servers");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Load file is failed servers-view.fxml " + e);
         }
     }
     @FXML
@@ -116,7 +140,7 @@ public class HelloController {
             Desktop.getDesktop().browse(new URI("https://github.com/IOleg-crypto"));
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Не вдалося відкрити браузер.");
+            System.out.println("Can`t open browser.");
         }
     }
 }

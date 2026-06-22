@@ -11,6 +11,7 @@ module com.example.chat.demo {
     //requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.desktop;
+    requires java.xml;
 
     opens com.example.chat.demo to javafx.fxml;
     exports com.example.chat.demo;

@@ -63,11 +63,24 @@
                      </font>
                   </Button>
 
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #a1a1aa; -fx-border-color: #3f3f46; -fx-border-radius: 10; -fx-cursor: hand;" text="Create server">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openHostWindow" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #a1a1aa; -fx-border-color: #3f3f46; -fx-border-radius: 10; -fx-cursor: hand;" text="Create server">
                      <font>
                         <Font name="Cascadia Code Regular" size="13.0" />
                      </font>
                   </Button>
+
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openMyServers" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #a1a1aa; -fx-border-color: #3f3f46; -fx-border-radius: 10; -fx-cursor: hand;" text="My Servers">
+                     <font>
+                        <Font name="Cascadia Code Regular" size="13.0" />
+                     </font>
+                  </Button>
+
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#disconnectServer" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #a1a1aa; -fx-border-color: #3f3f46; -fx-border-radius: 10; -fx-cursor: hand;" text="Disconnect">
+                     <font>
+                        <Font name="Cascadia Code Regular" size="13.0" />
+                     </font>
+                  </Button>
+
                   <Button layoutX="27.0" layoutY="128.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openInfoWindow" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #a1a1aa; -fx-border-color: #3f3f46; -fx-border-radius: 10; -fx-cursor: hand;" text="Info" textFill="#b43737">
                      <font>
                         <Font name="Cascadia Code Regular" size="13.0" />

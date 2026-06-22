@@ -20,5 +20,9 @@ public class HelloApplication extends Application {
         stage.setTitle("Mercury");
         stage.setScene(scene);
         stage.show();
+
+        stage.setOnCloseRequest(event -> {
+            NetworkManager.getInstance().disconnect();
+        });
     }
 }

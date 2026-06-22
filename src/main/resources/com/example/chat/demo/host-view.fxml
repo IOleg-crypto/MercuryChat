@@ -33,5 +33,10 @@
             <Insets top="10.0" />
          </VBox.margin>
       </Button>
+      <Text fill="#71717a" strokeType="OUTSIDE" strokeWidth="0.0" text="Automatic port forwarding via UPnP">
+         <font>
+            <Font name="Cascadia Code Regular" size="11.0" />
+         </font>
+      </Text>
    </children>
 </VBox>

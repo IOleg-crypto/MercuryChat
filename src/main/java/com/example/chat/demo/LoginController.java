@@ -3,7 +3,8 @@ package com.example.chat.demo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-
+import javafx.stage.Stage;
+import javafx.scene.Node;
 
 public class LoginController {
     @FXML private TextField usernameField;
@@ -33,6 +34,9 @@ public class LoginController {
 
             if (isConnected) {
                 System.out.println("[CLIENT] Connected successfully to " + ip + ":" + port);
+                // Close the login window
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.close();
             } else {
                 System.out.println("[CLIENT] Connection failed. Check if server is running.");
             }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" prefHeight="250.0" prefWidth="300.0" spacing="15.0" style="-fx-background-color: #1a1a24;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chat.demo.ServersController">
+   <padding>
+      <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+   </padding>
+   <children>
+      <Text fill="#f4f4f6" strokeType="OUTSIDE" strokeWidth="0.0" text="My Servers Status">
+         <font>
+            <Font name="Cascadia Code SemiBold" size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </Text>
+
+      <TextArea fx:id="statusArea" editable="false" prefHeight="100.0" style="-fx-control-inner-background: #2b2b36; -fx-text-fill: white;" wrapText="true" />
+   </children>
+</VBox>
