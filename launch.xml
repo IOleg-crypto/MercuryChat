@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>D:\gitnext\java_projects\demo\out\artifacts\demo_jar\demo.jar</jar>
+  <outfile>D:\gitnext\java_projects\demo\out\program\СhatDemo.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>D:\gitnext\java_projects\demo\src\main\resources\com\example\chat\demo\icon\chaticon.jpg</icon>
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>true</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+    <opt>-Dlaunch4j.exedir=&quot;%EXEDIR%&quot;</opt>
+  </jre>
+</launch4jConfig>
