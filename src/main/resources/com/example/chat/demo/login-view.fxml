@@ -26,13 +26,13 @@
          </font>
       </TextField>
 
-      <TextField  fx:id="ipField" maxWidth="1.7976931348623157E308" prefHeight="42.0" promptText="Server IP (e.g., 0.tcp.ngrok.io)" style="-fx-control-inner-background: #202024; -fx-text-fill: #e4e4e7; -fx-prompt-text-fill: #71717a; -fx-background-color: transparent; -fx-border-color: #3f3f46; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 0 14 0 14;">
+      <TextField fx:id="ipField" maxWidth="1.7976931348623157E308" prefHeight="42.0" promptText="Server IP" style="-fx-control-inner-background: #202024; -fx-text-fill: #e4e4e7; -fx-prompt-text-fill: #71717a; -fx-background-color: transparent; -fx-border-color: #3f3f46; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 0 14 0 14;">
          <font>
             <Font name="Cascadia Code Regular" size="13.0" />
          </font>
       </TextField>
 
-      <TextField  fx:id="portField" maxWidth="1.7976931348623157E308" prefHeight="42.0" promptText="Port (e.g., 14832)" style="-fx-control-inner-background: #202024; -fx-text-fill: #e4e4e7; -fx-prompt-text-fill: #71717a; -fx-background-color: transparent; -fx-border-color: #3f3f46; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 0 14 0 14;">
+      <TextField fx:id="portField" maxWidth="1.7976931348623157E308" prefHeight="42.0" promptText="Port (e.g., 14832)" style="-fx-control-inner-background: #202024; -fx-text-fill: #e4e4e7; -fx-prompt-text-fill: #71717a; -fx-background-color: transparent; -fx-border-color: #3f3f46; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 0 14 0 14;">
          <font>
             <Font name="Cascadia Code Regular" size="13.0" />
          </font>

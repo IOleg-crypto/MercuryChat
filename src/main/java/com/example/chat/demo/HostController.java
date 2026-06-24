@@ -31,9 +31,9 @@ public class HostController{
         boolean isStarted = networkManager.startServer(port, username);
 
         if (isStarted) {
-            if (HelloController.getInstance() != null) {
-                HelloController.getInstance().appendMessage(">>> System: Server successfully hosted on port " + port);
-                HelloController.getInstance().appendMessage(">>> System: Waiting for connection...");
+            if (MainController.getInstance() != null) {
+                MainController.getInstance().appendMessage(">>> Server successfully hosted on port " + port);
+                MainController.getInstance().appendMessage(">>> Waiting for connection...");
             }
             // Close the host window
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

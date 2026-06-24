@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #16161a;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chat.demo.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #16161a;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chat.demo.MainController">
    <children>
 
       <VBox alignment="CENTER" cache="true" focusTraversable="true" prefHeight="55.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -57,13 +57,13 @@
                      </VBox.margin>
                   </Text>
 
-                  <Button id="loginButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openJoinWindow" prefHeight="40.0" style="-fx-background-color: #4f46e5; -fx-text-fill: #ffffff; -fx-background-radius: 10; -fx-cursor: hand;" text="Log In">
+                  <Button id="loginButton" fx:id="loginButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openJoinWindow" prefHeight="40.0" style="-fx-background-color: #4f46e5; -fx-text-fill: #ffffff; -fx-background-radius: 10; -fx-cursor: hand;" text="Log In">
                      <font>
                         <Font name="Cascadia Code SemiBold" size="13.0" />
                      </font>
                   </Button>
 
-                  <Button id="createServerButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openHostWindow" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #a1a1aa; -fx-border-color: #3f3f46; -fx-border-radius: 10; -fx-cursor: hand;" text="Create server">
+                  <Button id="createServerButton" fx:id="createServerButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openHostWindow" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #a1a1aa; -fx-border-color: #3f3f46; -fx-border-radius: 10; -fx-cursor: hand;" text="Create server">
                      <font>
                         <Font name="Cascadia Code Regular" size="13.0" />
                      </font>

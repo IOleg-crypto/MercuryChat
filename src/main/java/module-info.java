@@ -12,6 +12,8 @@ module com.example.chat.demo {
     requires com.almasb.fxgl.all;
     requires java.desktop;
     requires java.xml;
+    requires annotations;
+    requires jdk.compiler;
 
     opens com.example.chat.demo to javafx.fxml;
     exports com.example.chat.demo;

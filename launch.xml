@@ -13,13 +13,12 @@
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
-  <icon>D:\gitnext\java_projects\demo\src\main\resources\com\example\chat\demo\icon\chaticon.jpg</icon>
+  <icon>D:\gitnext\java_projects\demo\src\main\resources\com\example\chat\demo\icon\chaticon.ico</icon>
   <jre>
     <path>%JAVA_HOME%;%PATH%</path>
-    <requiresJdk>true</requiresJdk>
+    <requiresJdk>false</requiresJdk>
     <requires64Bit>false</requires64Bit>
     <minVersion></minVersion>
     <maxVersion></maxVersion>
-    <opt>-Dlaunch4j.exedir=&quot;%EXEDIR%&quot;</opt>
   </jre>
 </launch4jConfig>
