@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -19,6 +20,8 @@ public class HelloController {
 
     @FXML private TextArea chatArea;
     @FXML private TextField messageField;
+    @FXML private Button loginButton;
+    @FXML private Button createServerButton;
 
 
     private static HelloController currentInstance;
@@ -32,6 +35,14 @@ public class HelloController {
 
     public static HelloController getInstance() {
         return currentInstance;
+    }
+    public Button getLoginButton()
+    {
+        return loginButton;
+    }
+    public Button getCreateServerButton()
+    {
+        return createServerButton;
     }
 
 
