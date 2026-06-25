@@ -12,34 +12,43 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import com.dosse.upnp.UPnP;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Singleton network manager handling socket connections, UPnP port mapping,
+ * and decoupling UI logic from the network layer using the Observer pattern.
+ */
 public class NetworkManager {
     private static NetworkManager instance;
 
+    // Connection state flags. Volatile ensures atomic visibility across threads.
     private volatile boolean isConnected = false;
     private boolean isServer = false;
 
+    // Client-side socket components
     private Socket clientSocket;
     private PrintWriter clientOut;
     private BufferedReader clientIn;
     private String username;
 
-    // Серверні змінні
+    // Server-side socket components
     private ServerSocket serverSocket;
+    // Thread-safe list to store and manage active remote client handlers
     private final List<ClientHandler> connectedClients = new CopyOnWriteArrayList<>();
     private int activePort = -1;
     private String serverExternalIP = "Unknown";
     private String serverLocalIP = "Unknown";
 
-    public String getUsername()
-    {
+    public String getUsername() {
         return username;
     }
 
-    // СПИСОК СЛУХАЧІВ ІНТЕРФЕЙСУ (Паттерн Observer)
+    // List of decoupled event listeners (UI or controllers subscribing to network events)
     private final List<NetworkListener> listeners = new CopyOnWriteArrayList<>();
 
     private NetworkManager() {}
 
+    /**
+     * Thread-safe Singleton instance retriever.
+     */
     public static synchronized NetworkManager getInstance() {
         if (instance == null) {
             instance = new NetworkManager();
@@ -47,14 +56,19 @@ public class NetworkManager {
         return instance;
     }
 
+    // --- Observer Pattern Subscription Management ---
+
     public void addListener(NetworkListener listener) {
         if (!listeners.contains(listener)) {
             listeners.add(listener);
         }
     }
+
     public void removeListener(NetworkListener listener) {
         listeners.remove(listener);
     }
+
+    // --- Internal Event Broadcasters to Observers ---
 
     private void notifyMessage(String message) {
         for (NetworkListener listener : listeners) {
@@ -74,6 +88,10 @@ public class NetworkManager {
         }
     }
 
+    /**
+     * Instantiates a ServerSocket and spawns a background thread to accept connection requests.
+     * Also triggers asynchronous UPnP port forwarding via WaifUPnP.
+     */
     public boolean startServer(int port, String username) {
         this.username = username;
         if (isConnected || serverSocket != null) {
@@ -84,6 +102,7 @@ public class NetworkManager {
         try {
             notifySystem("Starting UPnP mapping for port " + port);
 
+            // Asynchronously request router port forwarding to keep UI responsive
             new Thread(() -> {
                 boolean mapped = UPnP.openPortTCP(port);
                 String externalIP = UPnP.getExternalIP();
@@ -108,6 +127,7 @@ public class NetworkManager {
             isServer = true;
             activePort = port;
 
+            // Instantiates and runs the main listening loop thread
             Thread serverThread = getThread();
             serverThread.start();
 
@@ -121,22 +141,28 @@ public class NetworkManager {
         }
     }
 
+    /**
+     * Assembles the main background thread responsible for block-waiting on incoming connections.
+     */
     @NotNull
     private Thread getThread() {
         Thread serverThread = new Thread(() -> {
             while (isConnected && !serverSocket.isClosed()) {
                 try {
+                    // Blocking call that awaits an incoming remote connection
                     Socket incomingSocket = serverSocket.accept();
                     System.out.println("Client connected: " + incomingSocket.getInetAddress());
 
+                    // Hand off socket processing to a dedicated ClientHandler instance
                     ClientHandler handler = new ClientHandler(incomingSocket, this);
                     connectedClients.add(handler);
 
+                    // Daemon thread setup ensures the handler thread stops automatically when app quits
                     Thread t = new Thread(handler);
                     t.setDaemon(true);
                     t.start();
 
-                    // Оповіщаємо ТІЛЬКИ локальну консоль сервера про підключення сокету
+                    // Notify local console about the low-level connection
                     System.out.println("A new user connected to socket.");
                 } catch (IOException e) {
                     if (isConnected) {
@@ -149,6 +175,9 @@ public class NetworkManager {
         return serverThread;
     }
 
+    /**
+     * Connects to a remote server host as a client participant.
+     */
     public boolean connect(String ip, int port, String username) {
         if (isConnected) {
             System.out.println("You are already connected to a server.");
@@ -164,6 +193,7 @@ public class NetworkManager {
             isConnected = true;
             isServer = false;
 
+            // Broadcast initial greeting to notify the host of arrival
             clientOut.println(username + " has joined the server!");
             startClientListening();
 
@@ -179,15 +209,18 @@ public class NetworkManager {
         }
     }
 
+    /**
+     * Packages and sends outbound chat messages depending on host state (Server vs Client).
+     */
     public void sendMessage(String message) {
         String formattedMessage = username + ": " + message;
 
         if (isServer) {
-            // Сервер сам написав: розсилаємо всім і показуємо у себе
+            // Server broadcasts directly to all clients and appends to own UI local view
             broadcastMessage(formattedMessage);
             notifyMessage(formattedMessage);
         } else {
-            // Клієнт сам написав: відправляємо на сервер
+            // Client forwards payload to the host server for central distribution
             if (isConnected && clientOut != null) {
                 clientOut.println(formattedMessage);
             } else {
@@ -199,28 +232,32 @@ public class NetworkManager {
     }
 
     /**
-     * ФІКС: НОВИЙ МЕТОД ДЛЯ ОБРОБКИ ПОВІДОМЛЕНЬ ВІД ІНШИХ КЛІЄНТІВ
-     * Сервер просто транслює готове підписане повідомлення без спотворення нікнеймів.
+     * Invoked by ClientHandlers when they intercept client payloads. Handles global routing.
      */
     public void handleIncomingClientMessage(String message) {
         if (isServer) {
-            // 1. Пересилаємо повідомлення (воно вже містить префікс "Нік: текст") усім клієнтам
             broadcastMessage(message);
-            // 2. Виводимо це повідомлення на екран самого Сервера
             notifyMessage(message);
         }
     }
 
+    /**
+     * Distributes a pre-formatted message payload across all tracked ClientHandler sockets.
+     */
     public void broadcastMessage(String message) {
         for (ClientHandler client : connectedClients) {
             client.sendMessage(message);
         }
     }
 
+    /**
+     * Spawns a background listener loop to read downstream messages from the server socket stream.
+     */
     private void startClientListening() {
         Thread listenerThread = new Thread(() -> {
             try {
                 String serverMessage;
+                // Read operations block natively until a newline character is intercepted
                 while (isConnected && (serverMessage = clientIn.readLine()) != null) {
                     System.out.println("Received from server/friend: " + serverMessage);
                     notifyMessage(serverMessage);
@@ -241,12 +278,17 @@ public class NetworkManager {
         listenerThread.start();
     }
 
+    /**
+     * Synchronized disconnection logic. Safely tears down open sockets,
+     * stream resources, and unmaps dynamic ports via UPnP asynchronously.
+     */
     public synchronized void disconnect() {
         if (!isConnected && !isServer && activePort == -1) return;
 
         isConnected = false;
         isServer = false;
 
+        // Clean up UPnP mappings in a separate background routine to avoid UI locks
         if (activePort != -1) {
             final int portToClose = activePort;
             activePort = -1;
@@ -264,6 +306,7 @@ public class NetworkManager {
         }
 
         try {
+            // Closing sockets breaks active blocking read/accept executions immediately
             if (clientSocket != null && !clientSocket.isClosed()) clientSocket.close();
             if (clientIn != null) clientIn.close();
             if (clientOut != null) clientOut.close();

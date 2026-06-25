@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class ChatApplication extends Application {
     @Override
@@ -16,7 +17,7 @@ public class ChatApplication extends Application {
         fxmlLoader = new FXMLLoader(ChatApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
-        Image icon = new Image(getClass().getResourceAsStream("icon/chaticon.jpg"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("icon/chaticon.jpg")));
         stage.getIcons().add(icon);
 
         stage.setTitle("Mercury");

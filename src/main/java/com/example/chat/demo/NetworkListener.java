@@ -1,5 +1,6 @@
 package com.example.chat.demo;
 
+// For Observer
 public interface NetworkListener {
     void onMessageReceived(String message);
     void onSystemMessage(String message);
